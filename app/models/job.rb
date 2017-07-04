@@ -5,6 +5,8 @@ class Job < ApplicationRecord
   validates :wage_lower_bound, numericality: { greater_than: 0, message: "最小薪水必须大于零" }
   validates :wage_lower_bound, numericality: { less_than: :wage_upper_bound, message: "薪水下限不能高于薪水上限" }
 
+  has_many :resumes
+
   def publish!
     self.is_hidden = false
     self.save
